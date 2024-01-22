@@ -228,7 +228,7 @@ public class SafeInput
             response = pipe.nextLine();
             if(response.matches(regExPattern))
             {
-                gotAVal = true;                
+                gotAVal = true;
             }
             else
             {
