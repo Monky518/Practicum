@@ -1,3 +1,0 @@
-123, zoey,rizor, miss, 2004
-456, jack,earl,mr,2003
-567,molly, rizor, miss, 2006
