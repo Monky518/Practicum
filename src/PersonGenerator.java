@@ -97,7 +97,7 @@ public class PersonGenerator
             String firstName = fields[1].trim();
             String lastName  = fields[2].trim();
             String title     = fields[3].trim();
-            int yob       = Integer.parseInt(fields[4].trim());
+            int yob          = Integer.parseInt(fields[4].trim());
 
             System.out.printf("\nLine %4d | %-8s%-15s%-15s%-6s%6d", num, id, firstName, lastName, title, yob);
         }
