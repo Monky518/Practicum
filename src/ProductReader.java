@@ -5,14 +5,14 @@ import java.nio.file.Path;
 
 import static java.nio.file.StandardOpenOption.CREATE;
 
-public class PersonReader
+public class ProductReader
 {
     public static void main(String[] args)
     {
         JFileChooser chooser = new JFileChooser();
         File selectedFile;
         String rec;
-        final int FIELDS_LENGTH = 5;
+        final int FIELDS_LENGTH = 4;
 
         try
         {
@@ -29,7 +29,7 @@ public class PersonReader
                 BufferedReader reader =
                         new BufferedReader(new InputStreamReader(in));
 
-                System.out.printf("\n%-8s%-15s%-15s%-6s%5s", "ID#", "FIRST NAME", "LAST NAME", "TITLE", "YOB");
+                System.out.printf("\n%-8s%-10s%-25s%-7s", "ID#", "NAME", "DESCRIPTION", "COST");
                 System.out.println("\n=================================================="); // do this exactly 50 times
 
                 while (reader.ready())
@@ -39,7 +39,7 @@ public class PersonReader
                     String[] fields = rec.split(",");
                     if (fields.length == FIELDS_LENGTH)
                     {
-                        System.out.printf("\n%-8s%-15s%-15s%-6s%6d", fields[0].trim(), fields[1].trim(), fields[2].trim(), fields[3].trim(), Integer.parseInt(fields[4].trim()));
+                        System.out.printf("\n%-8s%-10s%-25s%-6.1f", fields[0].trim(), fields[1].trim(), fields[2].trim(), Double.parseDouble(fields[3].trim()));
                     }
                     else
                     {
