@@ -2,6 +2,7 @@ import javax.swing.*;
 import java.io.*;
 import java.nio.file.Files;
 import java.nio.file.Path;
+import java.util.ArrayList;
 
 import static java.nio.file.StandardOpenOption.CREATE;
 
@@ -13,6 +14,8 @@ public class PersonReader
         File selectedFile;
         String rec;
         final int FIELDS_LENGTH = 5;
+
+        ArrayList<Person> folks = new ArrayList<>();
 
         try
         {
@@ -29,14 +32,14 @@ public class PersonReader
                 BufferedReader reader =
                         new BufferedReader(new InputStreamReader(in));
 
-                System.out.printf("\n%-8s%-15s%-15s%-6s%5s", "ID#", "FIRST NAME", "LAST NAME", "TITLE", "YOB");
+                System.out.printf("\n%-8s%-15s%-15s%-6s%6s", "ID#", "FIRST NAME", "LAST NAME", "TITLE", "YOB");
                 System.out.println("\n=================================================="); // do this exactly 50 times
 
                 while (reader.ready())
                 {
                     rec = reader.readLine();
-
                     String[] fields = rec.split(",");
+
                     if (fields.length == FIELDS_LENGTH)
                     {
                         System.out.printf("\n%-8s%-15s%-15s%-6s%6d", fields[0].trim(), fields[1].trim(), fields[2].trim(), fields[3].trim(), Integer.parseInt(fields[4].trim()));
