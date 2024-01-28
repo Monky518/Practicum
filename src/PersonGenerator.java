@@ -7,7 +7,7 @@ import java.util.Scanner;
 
 import static java.nio.file.StandardOpenOption.CREATE;
 
-public class PersonGenerator
+public class PersonGenerator    // Creates an ArrayList of Person objects and writes to a file
 {
     public static void main(String[] args)
     {
@@ -15,6 +15,8 @@ public class PersonGenerator
         ArrayList<String> lines = new ArrayList<>();
         final int FIELDS_LENGTH = 5;
         boolean done = false;
+
+        ArrayList<Person> folks = new ArrayList<>();
 
         try
         {
@@ -60,12 +62,18 @@ public class PersonGenerator
                     }
 
                     writer.close();
-                    System.out.println("Data file written!");
+                    System.out.println("Data file written!\n");
+
+                    for (Person peep : folks)
+                    {
+                        System.out.println("CSV:  "+ peep.toCSVDataRecord());
+                    }
                 }
                 else if (test.length == FIELDS_LENGTH)
                 {
                     // add data
                     lines.add(userInput);
+                    folks.add(new Person(test[0].trim(), test[1].trim(), test[2].trim(), test[3].trim(), Integer.parseInt(test[4].trim())));
                 }
                 else
                 {
