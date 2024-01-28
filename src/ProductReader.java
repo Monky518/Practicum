@@ -2,6 +2,7 @@ import javax.swing.*;
 import java.io.*;
 import java.nio.file.Files;
 import java.nio.file.Path;
+import java.util.ArrayList;
 
 import static java.nio.file.StandardOpenOption.CREATE;
 
@@ -13,6 +14,8 @@ public class ProductReader
         File selectedFile;
         String rec;
         final int FIELDS_LENGTH = 4;
+
+        ArrayList<Product> products = new ArrayList<>();
 
         try
         {
@@ -40,6 +43,7 @@ public class ProductReader
                     if (fields.length == FIELDS_LENGTH)
                     {
                         System.out.printf("\n%-8s%-10s%-25s%-6.1f", fields[0].trim(), fields[1].trim(), fields[2].trim(), Double.parseDouble(fields[3].trim()));
+                        products.add(new Product(fields[0].trim(), fields[1].trim(), fields[2].trim(), Double.parseDouble(fields[3].trim())));
                     }
                     else
                     {
@@ -49,6 +53,11 @@ public class ProductReader
                 }
                 reader.close();
                 System.out.println("\n\nData file read!");
+
+                for (Product piece : products)
+                {
+                    System.out.println("CSV:  "+ piece.toCSVDataRecord());
+                }
             }
             else
             {

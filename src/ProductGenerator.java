@@ -7,7 +7,7 @@ import java.util.Scanner;
 
 import static java.nio.file.StandardOpenOption.CREATE;
 
-public class ProductWriter
+public class ProductGenerator
 {
     public static void main(String[] args)
     {
@@ -15,6 +15,8 @@ public class ProductWriter
         ArrayList<String> lines = new ArrayList<>();
         final int FIELDS_LENGTH = 4;
         boolean done = false;
+
+        ArrayList<Product> products = new ArrayList<>();
 
         try
         {
@@ -51,12 +53,18 @@ public class ProductWriter
                     }
 
                     writer.close();
-                    System.out.println("Data file written!");
+                    System.out.println("Data file written!\n");
+
+                    for (Product piece : products)
+                    {
+                        System.out.println("CSV:  "+ piece.toCSVDataRecord());
+                    }
                 }
                 else if (test.length == FIELDS_LENGTH)
                 {
                     // add data
                     lines.add(userInput);
+                    products.add(new Product(test[0].trim(), test[1].trim(), test[2].trim(), Double.parseDouble(test[3].trim())));
                 }
                 else
                 {
