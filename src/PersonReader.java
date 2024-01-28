@@ -43,6 +43,11 @@ public class PersonReader
                     if (fields.length == FIELDS_LENGTH)
                     {
                         System.out.printf("\n%-8s%-15s%-15s%-6s%6d", fields[0].trim(), fields[1].trim(), fields[2].trim(), fields[3].trim(), Integer.parseInt(fields[4].trim()));
+
+                        // In the Reader, as you read a line of the data file use the java String split function to separate the fields of this single record into an array
+                        // Then use the array data to create an object and add it to the arrayList
+                        // Your table of Person or Product data should be generated from the ArrayList
+                        folks.add(new Person(fields[0].trim(), fields[1].trim(), fields[2].trim(), fields[3].trim(), Integer.parseInt(fields[4].trim())));
                     }
                     else
                     {
@@ -52,6 +57,11 @@ public class PersonReader
                 }
                 reader.close();
                 System.out.println("\n\nData file read!");
+
+                for (Person peep : folks)
+                {
+                    System.out.println("CSV:  "+ peep.toCSVDataRecord());
+                }
             }
             else
             {

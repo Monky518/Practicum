@@ -2,17 +2,17 @@ import java.time.Year;
 
 public class Person
 {
+    private String ID;      // should never change sequence of digits
     private String firstName;
     private String lastName;
-    private String ID;      // should never change sequence of digits
     private String title;   // a prefix: Mr. Mrs. Ms, Prof. Dr. Hon. Etc.
     private int YOB;        // Year of birth  // Range should be 1940 - 2000
 
-    public Person(String firstName, String lastName, String ID, String title, int YOB) // add data
+    public Person(String ID, String firstName, String lastName, String title, int YOB) // add data
     {
-        this.firstName = firstName; // this is the class while just firstName is the class
+        this.ID = ID;   // this is the class while just firstName is the class
+        this.firstName = firstName;
         this.lastName = lastName;
-        this.ID = ID;
         this.title = title;
         this.YOB = YOB;
     }
